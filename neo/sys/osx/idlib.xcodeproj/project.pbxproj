@@ -914,7 +914,7 @@
 		81C857240912ACE80095BC33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -938,7 +938,7 @@
 		81C857250912ACE80095BC33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -969,7 +969,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				GCC_MODEL_TUNING = "";
 				GCC_ONE_BYTE_BOOL = YES;
@@ -978,15 +978,15 @@
 					"$(MAIN_CPP_DEFINES)",
 					MACOS_X,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MAIN_CPP_DEFINES = _DEBUG;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-fpermissive",
 				);
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				USE_SEPARATE_HEADERMAPS = YES;
-				VALID_ARCHS = i386;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -994,7 +994,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_ALTIVEC_EXTENSIONS = YES;
 				GCC_MODEL_TUNING = "";
 				GCC_ONE_BYTE_BOOL = YES;
@@ -1003,21 +1003,21 @@
 					"$(MAIN_CPP_DEFINES)",
 					MACOS_X,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-fpermissive",
 				);
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				USE_SEPARATE_HEADERMAPS = YES;
-				VALID_ARCHS = i386;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
 		81C858C70912AD610095BC33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -1046,7 +1046,7 @@
 		81C858C80912AD610095BC33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = YES;

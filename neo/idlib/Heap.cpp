@@ -333,11 +333,11 @@ void *idHeap::Allocate16( const dword bytes ) {
 			common->FatalError( "malloc failure for %i", bytes );
 		}
 	}
-	alignedPtr = (byte *) ( ( (int) ptr ) + 15 & ~15 );
+	alignedPtr = (byte *) ( ( (int64_t) ptr ) + 15 & ~15 );
 	if ( alignedPtr - ptr < 4 ) {
 		alignedPtr += 16;
 	}
-	*((int *)(alignedPtr - 4)) = (int) ptr;
+	*((int *)(alignedPtr - 4)) = (int64_t) ptr;
 	return (void *) alignedPtr;
 }
 
@@ -489,7 +489,7 @@ idHeap::page_s* idHeap::AllocatePage( dword bytes ) {
 			}
 		}
 
-		p->data		= (void *) ALIGN_SIZE( (int)((byte *)(p)) + sizeof( idHeap::page_s ) );
+		p->data		= (void *) ALIGN_SIZE( (int64_t)((byte *)(p)) + sizeof( idHeap::page_s ) );
 		p->dataSize	= size - sizeof(idHeap::page_s);
 		p->firstFree = NULL;
 		p->largestFree = 0;
@@ -590,7 +590,7 @@ void idHeap::SmallFree( void *ptr ) {
 	((byte *)(ptr))[-1] = INVALID_ALLOC;
 
 	byte *d = ( (byte *)ptr ) - SMALL_HEADER_SIZE;
-	dword *dt = (dword *)ptr;
+	int64_t *dt = (int64_t *)ptr;
 	// index into the table with free small memory blocks
 	dword ix = *d;
 
@@ -599,7 +599,7 @@ void idHeap::SmallFree( void *ptr ) {
 		idLib::common->FatalError( "SmallFree: invalid memory block" );
 	}
 
-	*dt = (dword)smallFirstFree[ix];	// write next index
+	*dt = (int64_t)smallFirstFree[ix];	// write next index
 	smallFirstFree[ix] = (void *)d;		// link
 }
 
@@ -929,8 +929,8 @@ void *idHeap::LargeAllocate( dword bytes ) {
 	}
 
 	byte *	d	= (byte*)(p->data) + ALIGN_SIZE( LARGE_HEADER_SIZE );
-	dword *	dw	= (dword*)(d - ALIGN_SIZE( LARGE_HEADER_SIZE ));
-	dw[0]		= (dword)p;				// write pointer back to page table
+	int64_t *	dw	= (int64_t*)(d - ALIGN_SIZE( LARGE_HEADER_SIZE ));
+	dw[0]		= (int64_t)p;				// write pointer back to page table
 	d[-1]		= LARGE_ALLOC;			// allocation identifier
 
 	// link to 'large used page list'
@@ -1116,7 +1116,7 @@ void *Mem_Alloc16( const int size ) {
 	}
 	void *mem = mem_heap->Allocate16( size );
 	// make sure the memory is 16 byte aligned
-	assert( ( ((int)mem) & 15) == 0 );
+	assert( ( ((int64_t)mem) & 15) == 0 );
 	return mem;
 }
 
@@ -1137,7 +1137,7 @@ void Mem_Free16( void *ptr ) {
 		return;
 	}
 	// make sure the memory is 16 byte aligned
-	assert( ( ((int)ptr) & 15) == 0 );
+	assert( ( ((int64_t)ptr) & 15) == 0 );
  	mem_heap->Free16( ptr );
 }
 
